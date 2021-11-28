@@ -1,14 +1,33 @@
-<h2>Hello World</h2>
+{% extends "pages/base.html" %}
+{% load static %}
 
 
 
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
-<!--<body>-->
+{% block content %}
 
-<!--</body>-->
-<!--</html>-->
+    <!-- Banner start -->
+    {% include "pages/includes/_home_banner.html" %}
+    <!-- Banner end -->
+
+    <!-- Featured car start -->
+    {% include "car/includes/_featured_car.html" with featured_cars=featured_cars %}
+    <!-- Featured car end -->
+
+    <!-- Rent car start -->
+    {% include "car/includes/_rent_a_car.html" with latest_cars=latest_cars%}
+    <!-- Rent car end -->
+
+    <!-- Our team start -->
+    {% if team %}
+        {% include "pages/includes/_team.html" with team=team %}
+    {% endif %}
+    <!-- Our team end -->
+
+    <!-- Car Overview Modal -->
+    {% include "car/includes/_car_overview_modal.html" %}
+
+
+    <!-- Intro section start -->
+    {% include "pages/includes/_intro_section.html" %}
+    <!-- Intro section end -->
+{% endblock content %}
